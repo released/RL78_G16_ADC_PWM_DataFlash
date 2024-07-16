@@ -1,0 +1,7 @@
+
+Link Option > Section
+
+
+.text,.data,.sdata,.RLIB,.SLIB,.textf,.constf/000D8,.const/01D00,.dataR,.bss/FFB00,.sdataR,.sbss/FFE20
+.text,.data,.sdata,.RLIB,.SLIB,.textf,.constf/000D8,.const/03D00,.dataR,.bss/FFB00,.sdataR,.sbss/FFE20
+.text,.data,.sdata,.RLIB,.SLIB,.textf,.constf/000D8,.const/07D00,.dataR,.bss/FFB00,.sdataR,.sbss/FFE20
