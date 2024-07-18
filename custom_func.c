@@ -385,7 +385,7 @@ void PWM0_4_Process_Adjust(void)
         temp_duty = get_TAU0_4_pwm_ch_duty();
         #if defined (ENABLE_LOG_PWM)
         {
-            printf_tiny("+duty1(0_4):0x%02X,0x%02X(%4d)\r\n",temp_duty ,data_reg_default,data_reg_default);
+            // printf_tiny("+duty1(0_4):0x%02X,0x%02X(%4d)\r\n",temp_duty ,data_reg_default,data_reg_default);
         }
         #endif
 
@@ -393,15 +393,16 @@ void PWM0_4_Process_Adjust(void)
         temp_duty = (temp_duty >= data_reg_default) ? (data_reg_default) : (temp_duty + duty_hex ) ;  
         #if defined (ENABLE_LOG_PWM)
         {
-            printf_tiny("+duty2(0_4):0x%02X,0x%02X\r\n",temp_duty ,duty_hex);
+            // printf_tiny("+duty2(0_4):0x%02X,0x%02X\r\n",temp_duty ,duty_hex);
+            printf_tiny("+duty2(0_4):0x%02X(%4d)/0x%02X(%4d)\r\n",temp_duty ,temp_duty,data_reg_default,data_reg_default);                 
         }
         #endif
 
         set_TAU0_4_pwm_ch_duty(temp_duty);
         #if defined (ENABLE_LOG_PWM)
         {
-            tmp_f = (float) (100*temp_duty/data_reg_default);
-            printf_tiny("+duty(0_4):0x%02X(%4d),%.2f\r\n",temp_duty, temp_duty ,tmp_f);
+            tmp_f = (float) 100*(temp_duty/data_reg_default);
+            // printf_tiny("+duty(0_4):0x%02X(%4d),%2.4f\r\n",temp_duty, temp_duty ,tmp_f);
         }
         #endif
 
@@ -416,23 +417,24 @@ void PWM0_4_Process_Adjust(void)
         temp_duty = get_TAU0_4_pwm_ch_duty();
         #if defined (ENABLE_LOG_PWM)
         {
-            printf_tiny("-duty1(0_4):0x%02X,0x%02X(%4d)\r\n",temp_duty ,data_reg_default,data_reg_default);
+            // printf_tiny("-duty1(0_4):0x%02X,0x%02X(%4d)\r\n",temp_duty ,data_reg_default,data_reg_default);
         }
         #endif
 
         duty_hex = (data_reg_default / DUTY_RESOLUTION) * 1;
-        temp_duty = (data_reg_default <= 0) ? (0) : (temp_duty - duty_hex ) ;   
+        temp_duty = (temp_duty <= 0) ? (0) : (temp_duty - duty_hex ) ;   
         #if defined (ENABLE_LOG_PWM)
         {
-            printf_tiny("-duty2(0_4):0x%02X,0x%02X\r\n",temp_duty ,duty_hex); 
+            // printf_tiny("-duty2(0_4):0x%02X,0x%02X\r\n",temp_duty ,duty_hex); 
+            printf_tiny("-duty2(0_4):0x%02X(%4d)/0x%02X(%4d)\r\n",temp_duty ,temp_duty,data_reg_default,data_reg_default);                         
         }
         #endif
 
         set_TAU0_4_pwm_ch_duty(temp_duty);
         #if defined (ENABLE_LOG_PWM)
         {
-            tmp_f = (float) (100*temp_duty/data_reg_default);
-            printf_tiny("-duty(0_4):0x%02X(%4d),%.2f\r\n",temp_duty, temp_duty ,tmp_f );
+            tmp_f = (float) 100*(temp_duty/data_reg_default);
+            // printf_tiny("-duty(0_4):0x%02X(%4d),%2.4f\r\n",temp_duty, temp_duty ,tmp_f );
         }
         #endif
 
@@ -480,7 +482,7 @@ void PWM0_2_Process_Adjust(void)
         temp_duty = get_TAU0_2_pwm_ch_duty();
         #if defined (ENABLE_LOG_PWM)
         {
-            printf_tiny("+duty1(0_2):0x%02X,0x%02X(%4d)\r\n",temp_duty ,data_reg_default,data_reg_default);
+            // printf_tiny("+duty1(0_2):0x%02X,0x%02X(%4d)\r\n",temp_duty ,data_reg_default,data_reg_default);
         }
         #endif
 
@@ -488,15 +490,16 @@ void PWM0_2_Process_Adjust(void)
         temp_duty = (temp_duty >= data_reg_default) ? (data_reg_default) : (temp_duty + duty_hex ) ;  
         #if defined (ENABLE_LOG_PWM)
         {
-            printf_tiny("+duty2(0_2):0x%02X,0x%02X\r\n",temp_duty ,duty_hex);
+            // printf_tiny("+duty2(0_2):0x%02X,0x%02X\r\n",temp_duty ,duty_hex);
+            printf_tiny("+duty2(0_2):0x%02X(%4d)/0x%02X(%4d)\r\n",temp_duty ,temp_duty,data_reg_default,data_reg_default);                                 
         }
         #endif
 
         set_TAU0_2_pwm_ch_duty(temp_duty);
         #if defined (ENABLE_LOG_PWM)
         {
-            tmp_f = (float) (100*temp_duty/data_reg_default);
-            printf_tiny("+duty(0_2):0x%02X(%4d),%.2f\r\n",temp_duty, temp_duty ,tmp_f);
+            tmp_f = (float) 100*(temp_duty/data_reg_default);
+            // printf_tiny("+duty(0_2):0x%02X(%4d),%2.4f\r\n",temp_duty, temp_duty ,tmp_f);
         
         }
         #endif
@@ -512,24 +515,24 @@ void PWM0_2_Process_Adjust(void)
         temp_duty = get_TAU0_2_pwm_ch_duty();
         #if defined (ENABLE_LOG_PWM)
         {
-            printf_tiny("-duty1(0_2):0x%02X,0x%02X(%4d)\r\n",temp_duty ,data_reg_default,data_reg_default);
-        
+            // printf_tiny("-duty1(0_2):0x%02X,0x%02X(%4d)\r\n",temp_duty ,data_reg_default,data_reg_default);        
         }
         #endif
 
         duty_hex = (data_reg_default / DUTY_RESOLUTION) * 1;
-        temp_duty = (data_reg_default <= 0) ? (0) : (temp_duty - duty_hex ) ;   
+        temp_duty = (temp_duty <= 0) ? (0) : (temp_duty - duty_hex ) ;   
         #if defined (ENABLE_LOG_PWM)
         {
-            printf_tiny("-duty2(0_2):0x%02X,0x%02X\r\n",temp_duty ,duty_hex);         
+            // printf_tiny("-duty2(0_2):0x%02X,0x%02X\r\n",temp_duty ,duty_hex);     
+            printf_tiny("-duty2(0_2):0x%02X(%4d)/0x%02X(%4d)\r\n",temp_duty ,temp_duty,data_reg_default,data_reg_default);         
         }
         #endif
 
         set_TAU0_2_pwm_ch_duty(temp_duty);
         #if defined (ENABLE_LOG_PWM)
         {
-            tmp_f = (float) (100*temp_duty/data_reg_default);
-            printf_tiny("-duty(0_2):0x%02X(%4d),%.2f\r\n",temp_duty, temp_duty ,tmp_f );        
+            tmp_f = (float) 100*(temp_duty/data_reg_default);
+            // printf_tiny("-duty(0_2):0x%02X(%4d),%2.4f\r\n",temp_duty, temp_duty ,tmp_f );        
         }
         #endif
 
@@ -688,17 +691,22 @@ void ADC_Process_in_IRQ(void)
 
 void Data_Flash_write_test(void)
 {
-    static unsigned int cnt = 0;
     unsigned int i = 0;     
     e_sample_ret_t l_e_rfsp_status_flag;
 
     for ( i = 0 ; i < DF_WRITE_DATA_LENGTH; i++)
     {
-        data_flash_data_write[i] = i;
+        data_flash_data_write[i] = 0x00;
     }
     data_flash_data_write[0] = 0x5A;
     data_flash_data_write[1] = 0x5A;
-    data_flash_data_write[2] = data_flash_data_write[2] + cnt;
+
+    data_flash_data_write[2] = (*(uint8_t __far *)((uint32_t)DF_WRITE_ADDRESS + 2)); // read index 2 for next data increase
+    data_flash_data_write[2] += 1;
+    for ( i = 2 ; i < (DF_WRITE_DATA_LENGTH -2) ; i++)
+    {
+        data_flash_data_write[i+1] = data_flash_data_write[i] + 1;
+    }
 
     data_flash_data_write[DF_WRITE_DATA_LENGTH-2] = 0xA5;
     data_flash_data_write[DF_WRITE_DATA_LENGTH-1] = 0xA5;
@@ -706,7 +714,6 @@ void Data_Flash_write_test(void)
     l_e_rfsp_status_flag = Sample_DataFlashControl(DF_WRITE_ADDRESS, DF_WRITE_DATA_LENGTH, data_flash_data_write);
     printf_tiny("Sample_DataFlashControl finish(0x%02X)\r\n",l_e_rfsp_status_flag);
 
-    cnt++;
 }
 
 void Data_Flash_read(void)
